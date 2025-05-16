@@ -1,0 +1,37 @@
+import re
+from re import Match, Pattern
+from anki.notes import Note
+from anki.cards import CardId
+from aqt import QClipboard, mw
+from aqt.browser import Browser
+from typing import List, Optional, Sequence, Set, cast
+
+
+def get_uworld_ids_from_cards(browser: Browser):
+
+    # Get selected card IDs
+    selected_card_ids: Sequence[CardId] = browser.selectedCards()
+
+    if not selected_card_ids:
+        return
+
+    # Map card IDs to note IDs
+    note_ids: Set = {mw.col.get_card(c).nid for c in selected_card_ids}
+    pattern: Pattern = re.compile(r".*UWorld.*Step[^0-9]+(\d+)$")
+    uworld_ids: Set = set()
+
+    for nid in note_ids:
+        note: Note = mw.col.get_note(nid)
+        for tag in note.tags:
+            match: Optional[Match] = pattern.fullmatch(tag)
+            if match:
+                uworld_ids.add(match.group(1))
+
+    if not uworld_ids:
+        return
+
+    # Create comma-separated list
+    id_list: str = ", ".join(sorted(uworld_ids, key=int))
+    clipboard: Optional[QClipboard] = mw.app.clipboard()
+    if clipboard:
+        clipboard.setText(id_list)

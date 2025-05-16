@@ -1,0 +1,10 @@
+{
+  "name": "UWorld ID Extractor",
+  "mod": 0,
+  "author": "kevicnar",
+  "version": "1.0",
+  "description": "Extracts UWorld question IDs from tags on selected notes in the Anki Browser.",
+  "anki_version": "2.1.55",
+  "tags": ["uworld", "anki", "step2", "step1", "ankiaddon"]
+}
+
