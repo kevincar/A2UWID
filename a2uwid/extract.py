@@ -4,7 +4,7 @@ from anki.notes import Note
 from anki.cards import CardId
 from aqt import QClipboard, mw
 from aqt.browser import Browser
-from typing import List, Optional, Sequence, Set, cast
+from typing import Dict, List, Optional, Sequence, Set, cast
 
 
 def get_uworld_ids_from_cards(browser: Browser):
@@ -17,7 +17,14 @@ def get_uworld_ids_from_cards(browser: Browser):
 
     # Map card IDs to note IDs
     note_ids: Set = {mw.col.get_card(c).nid for c in selected_card_ids}
-    pattern: Pattern = re.compile(r".*UWorld.*Step[^0-9]+(\d+)$")
+
+    # Load config
+    config: Dict = cast(Dict, mw.addonManager.getConfig("a2uwid"))
+    step_filter: str = config.get("step_filter", "Step2")
+    exam_filter: str = config.get("exam_filter", "Step")
+    pattern: Pattern = re.compile(
+        r".*" + step_filter + r".*UWorld.*" + exam_filter + r"[^0-9]+(\d+)$"
+    )
     uworld_ids: Set = set()
 
     for nid in note_ids:

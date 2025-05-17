@@ -5,3 +5,4 @@ from .ui import on_browser_will_show
 
 # Register hook
 browser_will_show.append(on_browser_will_show)
+
