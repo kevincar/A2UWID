@@ -19,7 +19,7 @@ def get_uworld_ids_from_cards(browser: Browser):
     note_ids: Set = {mw.col.get_card(c).nid for c in selected_card_ids}
 
     # Load config
-    config: Dict = cast(Dict, mw.addonManager.getConfig("a2uwid"))
+    config: Dict = cast(Dict, mw.addonManager.getConfig(__name__))
     step_filter: str = config.get("step_filter", "Step2")
     exam_filter: str = config.get("exam_filter", "Step")
     pattern: Pattern = re.compile(

@@ -85,16 +85,16 @@ class SettingsDialog(QDialog):
     @property
     def config(self) -> Dict:
         default: Dict = {"step_filter": None, "exam_filter": None}
-        config: Optional[Dict] = mw.addonManager.getConfig("a2uwid")
+        config: Optional[Dict] = mw.addonManager.getConfig(__name__)
         if config is None:
-            mw.addonManager.writeConfig("a2uwid", default)
+            mw.addonManager.writeConfig(__name__, default)
             return default
         else:
             return config
 
     @config.setter
     def config(self, val: Dict) -> None:
-        mw.addonManager.writeConfig("a2uwid", val)
+        mw.addonManager.writeConfig(__name__, val)
 
     def save_settings(self) -> None:
         config: Dict = self.config
