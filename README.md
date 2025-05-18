@@ -3,7 +3,7 @@
 ## UWorld ID Extractor for Anki
 
 ![Anki Version](https://img.shields.io/badge/Anki-2.1.55%2B-blue)
-![License](https://img.shields.io/github/license/yourusername/anki-uworld-id-extractor)
+![License](https://img.shields.io/github/license/kevincar/A2UWID)
 ![Platform](https://img.shields.io/badge/Platform-Anki%20Desktop-orange)
 
 This Anki add-on extracts **UWorld question IDs** from tags on **selected
