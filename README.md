@@ -11,6 +11,10 @@ cards in the Browser** and copies them as a **comma-separated list** to your
 clipboard. It is especially useful for students studying for **USMLE Step 1 or
 Step 2** who tag their Anki notes with UWorld question references.
 
+## 📦 Installation
+
+[See the Addon page](https://ankiweb.net/shared/info/1714558154)
+
 ## ✨ Features
 
 - Extracts UWorld question IDs from selected cards.
