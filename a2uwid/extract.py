@@ -8,16 +8,6 @@ from aqt.browser import Browser
 from typing import Dict, List, Optional, Sequence, Set, cast
 
 
-# Simple info dialog
-showInfo("Operation completed successfully.")
-
-# Warning dialog
-showWarning("This may overwrite existing data.")
-
-# Critical error dialog
-showCritical("An error occurred while saving settings.")
-
-
 def get_uworld_ids_from_cards(browser: Browser):
 
     # Get selected card IDs
